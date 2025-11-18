@@ -16,7 +16,7 @@ pipeline{
         stage('WAIT FOR APPROVAL'){
             steps{
                 timeout(10) {
-                    input message: 'Approval needed, shall we proceed?' ok: "Approve"
+                    input message: 'Approval needed, shall we proceed?', ok: "Approve"
                 }
             }
         }
