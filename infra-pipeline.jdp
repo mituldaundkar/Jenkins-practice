@@ -1,0 +1,30 @@
+pipeline{
+    agent any
+    stages{
+        stage('PULL'){
+            steps{
+                    git credentialsId: 'gitlab-token', url: 'https://gitlab.com/shubham.kalsait/on-cdec-terraform.git'
+            }
+        }
+        stage('PLAN'){
+            steps{
+                    sh '''cd day9
+                    terraform init
+                        terraform plan'''
+            }
+        }
+        stage('WAIT FOR APPROVAL'){
+            steps{
+                timeout(10) {
+                    input 'Approval needed, shall we proceed?'
+                }
+            }
+        }
+        stage('APPLY'){
+            steps{
+                    sh '''cd day9
+                    terraform apply --auto-approve'''
+            }
+        }
+    }
+}
