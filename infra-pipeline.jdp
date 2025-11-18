@@ -3,13 +3,12 @@ pipeline{
     stages{
         stage('PULL'){
             steps{
-                    git branch: 'main', credentialsId: 'gitlab-token', url: 'https://gitlab.com/shubham.kalsait/on-cdec-terraform.git'
+                    git branch: 'main', url: 'https://github.com/mituldaundkar/Jenkins-practice.git'
             }
         }
         stage('PLAN'){
             steps{
-                    sh '''cd day9
-                    terraform init
+                    sh '''terraform init
                         terraform plan'''
             }
         }
@@ -22,8 +21,7 @@ pipeline{
         }
         stage('APPLY'){
             steps{
-                    sh '''cd day9
-                    terraform apply --auto-approve'''
+                    sh '''terraform apply --auto-approve'''
             }
         }
     }
