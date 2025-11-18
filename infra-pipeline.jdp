@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('PULL'){
             steps{
-                    git credentialsId: 'gitlab-token', url: 'https://gitlab.com/shubham.kalsait/on-cdec-terraform.git'
+                    git branch: 'main', credentialsId: 'gitlab-token', url: 'https://gitlab.com/shubham.kalsait/on-cdec-terraform.git'
             }
         }
         stage('PLAN'){
