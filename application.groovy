@@ -9,13 +9,13 @@ pipeline{
         stage('FRONTEND DOCKER-BUILD'){
             steps{
                 sh '''cd frontend
-                        docker build. -t mituldaundkar/easy-frontend:latest'''
+                        docker build . -t mituldaundkar/easy-frontend:latest'''
             }
         }
         stage('BACKEND DOCKER-BUILD'){
             steps{
                 sh '''cd backend
-                    docker build. -t mituldaundkar/easy-backend:latest'''
+                    docker build . -t mituldaundkar/easy-backend:latest'''
             }
         }
         stage('DOCKER-PUSH'){
